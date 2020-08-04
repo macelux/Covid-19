@@ -23,11 +23,11 @@ class InfoScreen extends StatelessWidget {
                   SizedBox(height: 5),
                   Text("Symptoms", style: KTitleTextStyle),
                   SizedBox(height: 5),
-                  Row(
-                    // spacing: 8, // gap between adjacent box
-                    // runSpacing: 6.0, // gap between lines
-                    // direction: Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Wrap(
+                     spacing: 8, // gap between adjacent box
+                     runSpacing: 6.0, // gap between lines
+                     direction: Axis.horizontal,
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       SymtomCard(
                         image: "assets/images/reminder.png",
@@ -38,10 +38,10 @@ class InfoScreen extends StatelessWidget {
                         title: "Cover",
                         isActive: true,
                       ),
-                      SymtomCard(
-                        image: "assets/images/reminder.png",
-                        title: "Fever",
-                      ),
+                      // SymtomCard(
+                      //   image: "assets/images/reminder.png",
+                      //   title: "Fever",
+                      // ),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -145,7 +145,7 @@ class SymtomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(25),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.white,

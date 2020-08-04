@@ -21,7 +21,7 @@ class MyHeader extends StatelessWidget {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left:40, top: 20, right: 1),
+        padding: EdgeInsets.only(left: 40, top: 30, right: 1),
         height: 200,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -34,20 +34,23 @@ class MyHeader extends StatelessWidget {
             ],
           ),
         ),
-        child: Column( 
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Align(
               alignment: Alignment.topRight,
-              child: IconButton(color: Colors.white, icon: Icon(Icons.menu), onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return InfoScreen();
-                }));
-              }),  
+              child: IconButton(
+                  color: Colors.white,
+                  iconSize: 25,
+                  icon: Icon(Icons.menu),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return InfoScreen();
+                    }));
+                  }),
             ),
-            SizedBox(
-              height: 30
-            ),
+            SizedBox(height: 30),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -62,8 +65,7 @@ class MyHeader extends StatelessWidget {
                     left: 130,
                     child: Text(
                       '$textTop \n$textBottom',
-                      style:
-                          KHeadingTextStyle.copyWith(color: Colors.white),
+                      style: KHeadingTextStyle.copyWith(color: Colors.white),
                     ),
                   ),
                   Container(),
