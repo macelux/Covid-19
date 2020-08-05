@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import './widgets/counter.dart';
 import './widgets/MyHeaeder.dart';
 import './constants.dart';
-import './info_screen.dart';
+ 
+
 
 void main() => runApp(MyApp());
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Covid 19',
       theme: ThemeData(
           scaffoldBackgroundColor: KBackgorundColor,
+          fontFamily: "DroidSans",
           textTheme: TextTheme(body1: TextStyle(color: KBodyTextColor))),
       home: HomeScreen(),
     );
@@ -183,3 +185,30 @@ class _DropDownState extends State<DropDown> {
     );
   }
 }
+ 
+  
+//  // data model
+//  class Dog {
+//   final int id;
+//   final String name;
+//   final int age;
+
+//   Dog({this.id, this.name, this.age});
+// } 
+ 
+
+// final Future<Database> database = openDatabase(
+//   // Set the path to the database.
+//   join(await getDatabasesPath(), 'database/database.db'),
+//   // When the database is first created, create a table to store dogs.
+//   onCreate: (db, version) {
+//     // Run the CREATE TABLE statement on the database.
+//     return db.execute(
+//       "CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)",
+//     );
+//   },
+//   // Set the version. This executes the onCreate function and provides a
+//   // path to perform database upgrades and downgrades.
+//   version: 1,
+// );
+

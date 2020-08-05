@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './widgets//MyHeaeder.dart';
 import './constants.dart';
+import 'package:covid_19/fetch_screen.dart';
 
 class InfoScreen extends StatelessWidget {
   @override
@@ -24,24 +25,20 @@ class InfoScreen extends StatelessWidget {
                   Text("Symptoms", style: KTitleTextStyle),
                   SizedBox(height: 5),
                   Wrap(
-                     spacing: 8, // gap between adjacent box
-                     runSpacing: 6.0, // gap between lines
-                     direction: Axis.horizontal,
+                    spacing: 8, // gap between adjacent box
+                    runSpacing: 6.0, // gap between lines
+                    direction: Axis.horizontal,
                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       SymtomCard(
                         image: "assets/images/reminder.png",
-                        title: "headache", 
+                        title: "headache",
                       ),
                       SymtomCard(
                         image: "assets/images/reminder.png",
                         title: "Cover",
                         isActive: true,
                       ),
-                      // SymtomCard(
-                      //   image: "assets/images/reminder.png",
-                      //   title: "Fever",
-                      // ),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -115,7 +112,8 @@ class PreventCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(title, style: KTitleTextStyle.copyWith(fontSize: 14)),
+                      Text(title,
+                          style: KTitleTextStyle.copyWith(fontSize: 14)),
                       Text(
                         text,
                         style: TextStyle(fontSize: 11),
@@ -139,29 +137,41 @@ class SymtomCard extends StatelessWidget {
     Key key,
     this.image,
     this.title,
-    this.isActive =false,
+    this.isActive = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(25),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-        boxShadow: [
-          isActive ? 
-          BoxShadow(
-              offset: Offset(0, 10), blurRadius: 20, color: KActiveShadowColor) 
-              
-          : BoxShadow(offset: Offset(0, 3), blurRadius: 5, color: KShadowColor),
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Image.asset(image, height: 90),
-          Text(title, style: TextStyle(fontWeight: FontWeight.bold))
-        ],
+    return GestureDetector(
+      onTap: () {
+        // final snackBar = SnackBar(content: Text("Tap"));
+        // Scaffold.of(context).showSnackBar(snackBar);
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FetchScreen();
+        }));
+      },
+      child: Container(
+        padding: EdgeInsets.all(25),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+          boxShadow: [
+            isActive
+                ? BoxShadow(
+                    offset: Offset(0, 10),
+                    blurRadius: 20,
+                    color: KActiveShadowColor)
+                : BoxShadow(
+                    offset: Offset(0, 3), blurRadius: 5, color: KShadowColor),
+          ],
+        ),
+        child: Column(
+          children: <Widget>[
+            Image.asset(image, height: 90),
+            Text(title, style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
       ),
     );
   }
